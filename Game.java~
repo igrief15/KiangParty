@@ -1,0 +1,12 @@
+
+public class Game
+{
+  int value;
+  int type;
+  
+  public int getType(){
+    return (type);
+  }
+  
+  
+}
