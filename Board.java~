@@ -4,11 +4,12 @@ public class Board
   ArrayList<Position> map = new ArrayList<Position>();
   public void createBoard()
   {
-    System.out.println("createboard");
-    for(int i = 0; i < map.size(); i++) //iterates through a loop, adding positions to it. 
+
+    for(int i = 0; i < 5; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
     {
       Position p = new Position();
       map.add(p);
+      System.out.println("createboard");
     }
     return;
   }
@@ -21,11 +22,13 @@ public class Board
         return map.get(index);
     }
   
-  public void drawBoard()
+  public void drawBoard() //you cant draw what doesnt exist so where are these position strings coming from? 
   {
-    System.out.println("drawboard");
     for(Position K : map)
+    {
+      System.out.println("drawboard");
       System.out.println(K);
+    }
   }
   
 }

@@ -5,11 +5,10 @@ public class Board
   public void createBoard()
   {
 
-    for(int i = 0; i < 5; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
+    for(int i = 0; i < 2; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
     {
       Position p = new Position();
       map.add(p);
-      System.out.println("createboard");
     }
     return;
   }
@@ -26,8 +25,7 @@ public class Board
   {
     for(Position K : map)
     {
-      System.out.println("drawboard");
-      System.out.println(K);
+      System.out.println(K.getType());
     }
   }
   

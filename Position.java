@@ -5,11 +5,11 @@ public class Position
   String value; //a string of the value represented on the board
   int type; //type of board position (subtract or add coin, or play game)
   
-   public Position() //honestly i forgot what this is
+  public Position() //honestly i forgot what this is
   {
-   index = 0;
-   value = "1";
-   type = 0;
+    index = 0;
+    value = "1";
+    type = 0;
   }
   public Position(int ind, String val) //honestly i forgot what this is
   {
@@ -41,8 +41,16 @@ public class Position
     return 5;
   }
   
-  public int function(){ //returns the block type of whatever space it called
-    return (type);
+  public int getType(){ //returns the block type of whatever space it called
+    return type;
+  }
+  
+  public String getValue(){
+    return value;
+  }
+  
+  public int getIndex(){
+    return index;
   }
   
   
