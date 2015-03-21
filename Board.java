@@ -8,7 +8,7 @@ public class Board
     for(int i = 0; i < 10; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
     {
       int tempval = i+1;
-      int temptyp = (int)Math.random()*10;
+      int temptyp = (int)(Math.random()*10);
       Position p = new Position(i,""+tempval,temptyp);
       map.add(p);
     }
