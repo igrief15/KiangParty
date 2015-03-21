@@ -5,16 +5,18 @@ public class Board
   public void createBoard()
   {
 
-    for(int i = 0; i < 2; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
+    for(int i = 0; i < 10; i++) //iterates through a loop, adding positions to it EXCEPT map.size() HAS NOTHING IN IT SO IT DOESNT ITERATE
     {
-      Position p = new Position();
+      int tempval = i+1;
+      int temptyp = (int)Math.random()*10;
+      Position p = new Position(i,""+tempval,temptyp);
       map.add(p);
     }
     return;
   }
   
-   public void addPos(int index, String value) {
-        map.add(new Position(index, value));
+   public void addPos(int index, String value, int type) {
+        map.add(new Position(index, value, type));
     }
 
     public Position getPos(int index) {
@@ -25,7 +27,7 @@ public class Board
   {
     for(Position K : map)
     {
-      System.out.println(K.getType());
+      System.out.println("index = " + K.getIndex() + ", value = " + K.getValue() + ", type = " + K.getType());
     }
   }
   

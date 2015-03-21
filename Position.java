@@ -11,21 +11,20 @@ public class Position
     value = "1";
     type = 0;
   }
-  public Position(int ind, String val) //honestly i forgot what this is
+  public Position(int ind, String val, int typ) //honestly i forgot what this is
   {
     index = ind;
     value = val;
-    int temp = (int)Math.random()*10;
     
-    if (temp < 2) //random dice roll for position type
+    if (typ < 2) //random dice roll for position type
     {
       type = 0;
     }
-    else if (temp < 4)
+    else if (typ < 4)
     {
       type = 1;
     }
-    else if (temp <6)
+    else if (typ <6)
     {
       type = 2;
     }
@@ -33,12 +32,6 @@ public class Position
     {
       type = 3;
     }
-  }
-  
-  public int createPos()
-  {
-    Position ok = new Position(0,"1");
-    return 5;
   }
   
   public int getType(){ //returns the block type of whatever space it called
