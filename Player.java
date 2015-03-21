@@ -20,7 +20,7 @@ public class Player
   }
   
   public int diceRoll(){ //dice roll for the player
-    int roll = (int)Math.random()*6+1;
+    int roll = (int)(Math.random()*6)+1;
     return (roll);
   }
   

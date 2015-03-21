@@ -7,7 +7,7 @@ public class BoardDriver
  {
   Board mario = new Board();
   mario.createBoard();
-  mario.drawBoard();
+  mario.drawBoard(10,3);
   boolean won = false;
   Player one = new Player();
   Player two = new Player();

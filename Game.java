@@ -4,7 +4,7 @@ public class Game
   //should have a list of games, and a method to call one at random 
   int game; //the index of the game that is in the game array 
   
-  int random = (int)Math.random()*10;
+  int random = (int)(Math.random()*10);
   
   
   

@@ -2,19 +2,19 @@
 public class Position
 {
   int index; //position in the board array, not the value it represents
-  String value; //a string of the value represented on the board
+  String display; //a string of the value represented on the board
   int type; //type of board position (subtract or add coin, or play game)
   
-  public Position() //honestly i forgot what this is
+  public Position() //default constructor
   {
     index = 0;
-    value = "1";
+    display = "1";
     type = 0;
   }
-  public Position(int ind, String val, int typ) //honestly i forgot what this is
+  public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
     index = ind;
-    value = val;
+    display = dis;
     
     if (typ < 2) //random dice roll for position type
     {
@@ -34,15 +34,19 @@ public class Position
     }
   }
   
+  public void assignDisplay(String dis){//not sure if i need to change index or value to fit the board layout
+    display = dis;
+  }
+  
   public int getType(){ //returns the block type of whatever space it called
     return type;
   }
   
-  public String getValue(){
-    return value;
+  public String getDisplay(){ //returns whatever it is that is displayed at the given position (map starts on 1)
+    return display;
   }
   
-  public int getIndex(){
+  public int getIndex(){ //returns true index of the space (might be obsolete, not sure how i am going to create the map)
     return index;
   }
   
