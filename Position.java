@@ -20,7 +20,7 @@ public class Position
     
     if (typ < 2) //random dice roll for position type
     {
-      display = "" + display;
+      display = " " + display;
     }
     else if (typ < 4)
     {

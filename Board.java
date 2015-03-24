@@ -41,12 +41,17 @@ public class Board
       }
     }
     int count = 0;
+    int otherCount = 0; //i needed another count variable
     for(int row = 0; row < numRows; row++)//this should iterate through the 2D array, space out each column and each row. 
     {
       for(int col = 0; col < numCols; col++)
       {
         count++;
-        System.out.print(mapArray[row][col] + "    ");
+        otherCount++;
+        if(otherCount < 10)
+          System.out.print(mapArray[row][col] + "     ");
+        else
+          System.out.print(mapArray[row][col] + "    ");
         if(count == numCols)
         {
           System.out.println("\n\n");
