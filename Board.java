@@ -27,23 +27,34 @@ public class Board
   
   public void drawBoard(int numRows, int numCols) //ok so it needs to create a few rows of strings concatenized together
   {
-    for (int i = 0; i < numRows; i++)
-    {
-      
-    }
-    
-    
     String[][] mapArray = new String[numRows][numCols]; //view is a 2D array
     int mapIndex = 0;//index of the 1D array
     
     for(int row = 0; row < numRows; row++)//iterates through all rows and columns
     {
       for(int col = 0; col < numCols; col++){
-        mapArray[row][col] = map.get(mapIndex).getDisplay();
+        if(row % 2 == 0)
+          mapArray[row][col] = map.get(mapIndex).getDisplay();
+        else 
+          mapArray[row][numCols - col - 1] = map.get(mapIndex).getDisplay();
         mapIndex++;
       }
     }
-  } 
+    int count = 0;
+    for(int row = 0; row < numRows; row++)//this should iterate through the 2D array, space out each column and each row. 
+    {
+      for(int col = 0; col < numCols; col++)
+      {
+        count++;
+        System.out.print(mapArray[row][col] + "    ");
+        if(count == numCols)
+        {
+          System.out.println("\n\n");
+          count = 0;
+        }
+      }
+    }
+  }
 }
 
 /*
@@ -55,4 +66,14 @@ public class Board
  
  mapIndex++;
  }
+ 
+ 
+ 
+ skyview
+ if(row % 2 == 0)
+ view[row][col] = scanned[scannedIndex];
+ else
+ view[row][numCols - col - 1] = scanned[scannedIndex];
+ 
+ scannedIndex++;
  */
