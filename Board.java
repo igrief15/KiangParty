@@ -60,6 +60,17 @@ public class Board
       }
     }
   }
+  
+   public void continueKey()
+  { 
+    System.out.println("Enter any key to continue..."); //i got it from stackoverflow
+    try
+    {
+      System.in.read();
+    }  
+    catch(Exception e)
+    {}  
+  }
 }
 
 /*
