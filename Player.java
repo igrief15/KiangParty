@@ -31,13 +31,12 @@ public class Player
     return coins;
   }
   
-    public int diceRoll(){ //dice roll for the player
+    public int diceRoll(){ //dice roll for the player, so i know what the player rolls
     int roll = (int)(Math.random()*6)+1;
     return (roll);
   }
   
-  public int move(){ //probably makes diceRoll obsolete, i probably don't need to have just a dice roll 
-    int roll = (int)(Math.random()*6)+1;
+  public int move(int roll){ //changes the position int of player and returns it
     position += roll;
     return position;
   }

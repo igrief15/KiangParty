@@ -19,6 +19,8 @@ public class BoardDriverMain
     {
       mario.drawBoard(3,10);
       mario.continueKey();
+      System.out.println(one.getName()+" rolled a " + one.diceRoll());
+      
       System.out.println("It works"); //DICE ROLL, DO A MOVE THING FOR ONE PLAYER? is move a board method or player method?
       won = true;
     }
@@ -26,8 +28,8 @@ public class BoardDriverMain
     
   }
   /*MOVEMENT
-   * can get a position int from the player class, 
-   * can then use that to change the display value of that particular position object
+   * can get a position int from the player class,  Ã
+   * can then use that to change the display value of that particular position object - if it goes through drawmap each time, i might just need display - 1 for index 
    * just have to be able to find the relevant object
    * then change the display value to read X or XX depending
    * and then when the next turn comes around, get the position int from player class
