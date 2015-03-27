@@ -1,9 +1,9 @@
 
 public class Player
 {
-  int position;
-  String name;
-  int coins;
+  int position; //position (display) of board
+  String name; //name of the player
+  int coins; //number of coins
   
   public Player()
   {
@@ -19,9 +19,28 @@ public class Player
     coins = c;
   }
   
-  public int diceRoll(){ //dice roll for the player
+  public int getPosition(){
+    return position;
+  }
+  
+  public String getName(){
+    return name;
+  }
+  
+  public int getCoins(){
+    return coins;
+  }
+  
+    public int diceRoll(){ //dice roll for the player
     int roll = (int)(Math.random()*6)+1;
     return (roll);
   }
+  
+  public int move(){ //probably makes diceRoll obsolete, i probably don't need to have just a dice roll 
+    int roll = (int)(Math.random()*6)+1;
+    position += roll;
+    return position;
+  }
+  
   
 }

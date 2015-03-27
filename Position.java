@@ -5,12 +5,14 @@ public class Position
   String display; //a string of the value represented on the board
   String type; //type of board position (subtract or add coin, or play game)
   int function;
+  String temp;
   
   public Position() //default constructor
   {
     index = 0;
     display = "1";
     function = 0;
+    temp = "";
   }
   public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
@@ -68,5 +70,13 @@ public class Position
     return index;
   }
   
+  public String occupy(){ //display if position is occupied
+    temp = display;  // why would i do that why did i do that i dont really know whats going on right now
+    return temp;
+  }
+  public String unoccupy(){ //display if position no longer occupied
+    display = temp;
+    return display;
+  }
   
 }

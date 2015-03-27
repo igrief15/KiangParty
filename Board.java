@@ -7,9 +7,9 @@ public class Board
     
     for(int i = 0; i < 30; i++) //iterates through a loop to create 30 positions of the board
     {
-      int tempDis = i+1;
-      int tempType = (int)(Math.random()*10);
-      Position p = new Position(i,""+tempDis,tempType);
+      int tempDis = i+1; //creates a variable for the display parameter of position object
+      int tempType = (int)(Math.random()*10); //creates a variable for type parameter of position object
+      Position p = new Position(i,""+tempDis,tempType); //creates a position object at index i, display i+1, and a random type
       map.add(p);
     }
     return;
@@ -48,11 +48,11 @@ public class Board
       {
         count++;
         otherCount++;
-        if(otherCount < 10)
+        if(otherCount < 10) //the first ten values get another space between them to align with the rest
           System.out.print(mapArray[row][col] + "     ");
         else
           System.out.print(mapArray[row][col] + "    ");
-        if(count == numCols)
+        if(count == numCols) //whenever there are 10 values in a row, it starts a new row
         {
           System.out.println("\n\n");
           count = 0;
@@ -61,7 +61,14 @@ public class Board
     }
   }
   
-   public void continueKey()
+  
+  public void move(int space) //im trying to figure out how this will work
+  {
+    
+  }
+  
+  
+   public void continueKey() //wanted to add pauses in the game so it doesnt go by in like 2 seconds, they should see what they roll, see the board change
   { 
     System.out.println("Enter any key to continue..."); //i got it from stackoverflow
     try
