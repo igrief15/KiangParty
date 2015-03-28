@@ -6,18 +6,20 @@ public class Position
   String type; //type of board position (subtract or add coin, or play game)
   int function; //int for how many coins? i think. I'm not sure how that works, and i think i have to change it anyway
   String tDisplay; //temporary string to switch the display value with X when occupied
-  
+  String oDisplay;
   public Position() //default constructor
   {
     index = 0;
     display = "1";
     function = 0;
     tDisplay = "";
+    oDisplay = "";
   }
   public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
     index = ind;
     tDisplay = dis; //because i need the raw display value
+    oDisplay = "";
     if ((typ < 2)||(index==0))  //random dice roll for position type
     {
       type = " ";
@@ -42,10 +44,6 @@ public class Position
       display = type + tDisplay; //play a game
       function = 3;
     }
-  }
-  
-  public void assignDisplay(String dis){//not sure if i need to change index or value to fit the board layout
-    display = dis;
   }
   
   public String getType(){ //returns the block type of whatever space it called
@@ -77,7 +75,7 @@ public class Position
   }
   
   public void occupyOne(){ //display if position is occupied
-    tDisplay = display;  //so how would i make it read XO if both players are on it
+    oDisplay = display;  //so how would i make it read XO if both players are on it
     if(function == 0){ 
         display = " X ";
       }
@@ -114,9 +112,9 @@ public class Position
   }
   public void unoccupyOne(){ //display if position no longer occupied
     if (index<10) //just for alignment, first 10 have more space
-      display = " "+ tDisplay;
+      display = " "+ oDisplay;
     else
-      display = tDisplay;
+      display = oDisplay;
   }
     public void unoccupyTwo(){ //display if position no longer occupied
     if (index<10) //just for alignment, first 10 have more space
