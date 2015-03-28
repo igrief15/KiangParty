@@ -26,7 +26,15 @@ public class BoardDriverMain
       mario.unoccupy(one.getPosition()); //calls unoccupy method
       mario.occupy(one.move(roll)); //calls occupy method
       one.changeCoins(mario.function(one.move(roll))); //calls function
-      System.out.println("It works"); //DICE ROLL, DO A MOVE THING FOR ONE PLAYER? is move a board method or player method?
+      System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
+      System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
+      mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
+      roll = two.diceRoll(); //temporary int for player one's roll
+      System.out.println(two.getName()+" rolled a " + roll);
+      // something like (one.getPosition()).unoccupy();
+      mario.unoccupy(two.getPosition()); //calls unoccupy method
+      mario.occupy(two.move(roll)); //calls occupy method
+      two.changeCoins(mario.function(two.move(roll))); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       if (one.getCoins() > 1)
