@@ -16,34 +16,46 @@ public class BoardDriverMain
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
+    System.out.println("First player with 10 coins wins!");
     while (won == false)
     {
       mario.drawBoard(3,10); //creates the board
+      
       mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
       roll = one.diceRoll(); //temporary int for player one's roll
       System.out.println(one.getName()+" rolled a " + roll);
-      // something like (one.getPosition()).unoccupy();
       mario.unoccupy(one.getPosition()); //calls unoccupy method
       mario.occupy(one.move(roll)); //calls occupy method
       one.changeCoins(mario.function(one.move(roll))); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
-      mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
+      
+      if (one.getCoins() > 5) //temporary value for testing
+        won = true;
+      else if(two.getCoins() > 5)
+        won = true;
+      else 
+        won = false;
+      
+      mario.drawBoard(3,10); //creates the board
+      
+      mario.continueKey();
       roll = two.diceRoll(); //temporary int for player one's roll
       System.out.println(two.getName()+" rolled a " + roll);
-      // something like (one.getPosition()).unoccupy();
       mario.unoccupy(two.getPosition()); //calls unoccupy method
       mario.occupy(two.move(roll)); //calls occupy method
       two.changeCoins(mario.function(two.move(roll))); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
-      if (one.getCoins() > 1)
+      
+      if (one.getCoins() > 5)
         won = true;
-      else if(two.getCoins() > 1)
+      else if(two.getCoins() > 5)
         won = true;
       else 
         won = false;
     }
+    
     System.out.println("Game Over");
     
   }
