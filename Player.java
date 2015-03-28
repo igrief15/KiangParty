@@ -38,7 +38,17 @@ public class Player
   
   public int move(int roll){ //changes the position int of player and returns it
     position += roll;
+    if(position > 30){ //29 + 3 = 32, but needs to be on space 2, so 32 - 30 = 2, space 2. 
+      position = (position - 30);
+    }
+    else
+    {
+    }
     return position;
+  }
+  
+  public void changeCoins(int coin){
+    coins += coin;
   }
   
   

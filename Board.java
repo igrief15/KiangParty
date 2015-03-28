@@ -62,12 +62,19 @@ public class Board
   }
   
   
-  public int move(int position) //parameter for the specific position, so position-1 is index, call occupy method to change tDisplay to X or O
+  public int function(int position) //parameter for the specific position, so position-1 is index, call occupy method to change tDisplay to X or O
   {
     int function;
-    map.get(position-1).occupy();//call occupy method for the position object in the map array at index position-1
     function = map.get(position-1).getFunction();
     return function; //returns the coin value or other stuff
+  }
+  public void unoccupy(int position)
+  {
+    map.get(position-1).unoccupy();
+  }
+  public void occupy(int position)
+  {
+    map.get(position-1).occupy();
   }
   
   

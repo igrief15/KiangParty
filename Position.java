@@ -18,8 +18,7 @@ public class Position
   {
     index = ind;
     tDisplay = dis; //because i need the raw display value
-    
-    if (typ < 2) //random dice roll for position type
+    if ((typ < 2)||(index==0))  //random dice roll for position type
     {
       type = " ";
       display = type + tDisplay; //nothing
@@ -79,7 +78,7 @@ public class Position
   
   public void occupy(){ //display if position is occupied
     tDisplay = display;  //so how would i make it read XO if both players are on it
-    if (index<10){
+    if (index<10){ //just for alignment, first 10 have more space
       if(function == 0){ 
         display = " X  ";
       }
@@ -109,7 +108,9 @@ public class Position
     }
   }
   public void unoccupy(){ //display if position no longer occupied
-    display = tDisplay;
+    if (index<10) //just for alignment, first 10 have more space
+      display = " "+ tDisplay;
+    else
+      display = tDisplay;
   }
-  
 }
