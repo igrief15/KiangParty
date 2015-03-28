@@ -74,9 +74,11 @@ public class Position
     return index;
   }
   
-  public void occupyOne(){ //display if position is occupied
-    oDisplay = display;  //so how would i make it read XO if both players are on it
-    if(function == 0){ 
+  public void occupyOne(int player){ //display if position is occupied
+    
+    if(player==1){ //if player one occupies the single space, X
+      oDisplay = display;
+      if(function == 0){ 
         display = " X ";
       }
       else if(function == 1){ 
@@ -88,13 +90,13 @@ public class Position
       else{ 
         display = "[X ";
       }
-    if (index<10){ //just for alignment, first 10 have more space
-      display = display + " ";
+      if (index<10){ //just for alignment, first 10 have more space
+        display += " ";
+      }
     }
-  }
-    public void occupyTwo(){ //display if position is occupied
-    tDisplay = display;  //so how would i make it read XO if both players are on it
-    if(function == 0){ 
+    else{ //otherwise its player two, with O
+      tDisplay = display; 
+      if(function == 0){ 
         display = " O ";
       }
       else if(function == 1){ 
@@ -106,20 +108,80 @@ public class Position
       else{ 
         display = "[O ";
       }
-    if (index<10){ //just for alignment, first 10 have more space
-      display = display + " ";
+      if (index<10){ //just for alignment, first 10 have more space
+        display += " ";
+      }
     }
   }
-  public void unoccupyOne(){ //display if position no longer occupied
-    if (index<10) //just for alignment, first 10 have more space
-      display = " "+ oDisplay;
-    else
-      display = oDisplay;
+  
+  
+  
+  public void occupyTwo(int player){ //display if position is occupied
+    if(function == 0){ 
+      display = " XO";
+    }
+    else if(function == 1){ 
+      display = "+XO";
+    }
+    else if(function == 2){  
+      display = "-XO";
+    }
+    else{ 
+      display = "[XO";
+    }
+    if (index<10){ //just for alignment, first 10 have more space
+      display += " ";
+    }
+    
   }
-    public void unoccupyTwo(){ //display if position no longer occupied
-    if (index<10) //just for alignment, first 10 have more space
-      display = " "+ tDisplay;
-    else
-      display = tDisplay;
+  public void unoccupyTwo(int player){ //change display from XO to X or O
+    if(player == 1){ //if player one moves, leaves O
+      if(function == 0){ 
+        display = " O ";
+      }
+      else if(function == 1){ 
+        display = "+O ";
+      }
+      else if(function == 2){  
+        display = "-O ";
+      }
+      else{ 
+        display = "[O ";
+      }
+      if (index<10){ //just for alignment, first 10 have more space
+        display += " ";
+      }
+    }
+    else{ //otherwise player one stays, its X
+      if(function == 0){ 
+        display = " X ";
+      }
+      else if(function == 1){ 
+        display = "+X ";
+      }
+      else if(function == 2){  
+        display = "-X ";
+      }
+      else{ 
+        display = "[X ";
+      }
+      if (index<10){ //just for alignment, first 10 have more space
+        display += " ";
+      }
+    }
+  }
+  public void unoccupyOne(int player){ //change display from whatever to original value
+    if(player == 1){ //if player one moves (not sure if it matters)
+      if (index<10) //just for alignment, first 10 have more space
+        display = " "+ oDisplay;
+      else
+        display = oDisplay;
+    }
+    else{ //else player two
+      if (index<10) //just for alignment, first 10 have more space
+        display = " "+ tDisplay;
+      else
+        display = tDisplay;
+    }
   }
 }

@@ -68,21 +68,25 @@ public class Board
     function = map.get(position-1).getFunction();
     return function; //returns the coin value or other stuff
   }
-  public void unoccupyOne(int position)
+    int ocCount = 0; //number occupying a space
+  
+  public void occupy(int position, int player) //int player divides into one and two
   {
-    map.get(position-1).unoccupyOne();
+    ocCount++;
+    if(ocCount==1) //one player on it
+      map.get(position-1).occupyOne(player); 
+    else //two players on it
+      map.get(position-1).occupyTwo(player);
+    
   }
-  public void occupyOne(int position)
+  public void unoccupy(int position, int player)
   {
-    map.get(position-1).occupyOne();
-  }
-    public void unoccupyTwo(int position)
-  {
-    map.get(position-1).unoccupyTwo();
-  }
-  public void occupyTwo(int position)
-  {
-    map.get(position-1).occupyTwo();
+    ocCount--;
+    if(ocCount==1)
+      map.get(position-1).unoccupyTwo(player); //changes XO to X or O
+    else
+      map.get(position-1).unoccupyOne(player); //changes X or O to original value
+    
   }
   
   
