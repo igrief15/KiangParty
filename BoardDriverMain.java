@@ -24,8 +24,8 @@ public class BoardDriverMain
       mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
       roll = one.diceRoll(); //temporary int for player one's roll
       System.out.println(one.getName()+" rolled a " + roll);
-      mario.unoccupy(one.getPosition()); //calls unoccupy method
-      mario.occupy(one.move(roll)); //calls occupy method
+      mario.unoccupyOne(one.getPosition()); //calls unoccupy method
+      mario.occupyOne(one.move(roll)); //calls occupy method
       one.changeCoins(mario.function(one.move(roll))); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
@@ -42,8 +42,8 @@ public class BoardDriverMain
       mario.continueKey();
       roll = two.diceRoll(); //temporary int for player one's roll
       System.out.println(two.getName()+" rolled a " + roll);
-      mario.unoccupy(two.getPosition()); //calls unoccupy method
-      mario.occupy(two.move(roll)); //calls occupy method
+      mario.unoccupyTwo(two.getPosition()); //calls unoccupy method
+      mario.occupyTwo(two.move(roll)); //calls occupy method
       two.changeCoins(mario.function(two.move(roll))); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");

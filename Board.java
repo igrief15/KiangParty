@@ -68,14 +68,23 @@ public class Board
     function = map.get(position-1).getFunction();
     return function; //returns the coin value or other stuff
   }
-  public void unoccupy(int position)
+  public void unoccupyOne(int position)
   {
-    map.get(position-1).unoccupy();
+    map.get(position-1).unoccupyOne();
   }
-  public void occupy(int position)
+  public void occupyOne(int position)
   {
-    map.get(position-1).occupy();
+    map.get(position-1).occupyOne();
   }
+    public void unoccupyTwo(int position)
+  {
+    map.get(position-1).unoccupyTwo();
+  }
+  public void occupyTwo(int position)
+  {
+    map.get(position-1).occupyTwo();
+  }
+  
   
   
    public void continueKey() //wanted to add pauses in the game so it doesnt go by in like 2 seconds, they should see what they roll, see the board change
