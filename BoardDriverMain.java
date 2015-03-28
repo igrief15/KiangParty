@@ -5,6 +5,7 @@ public class BoardDriverMain
 { 
   public static void main(String[] args)
   {
+    int roll = 0;
     Scanner keyboard = new Scanner(System.in);
     Board mario = new Board();
     mario.createBoard();
@@ -17,25 +18,31 @@ public class BoardDriverMain
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
     while (won == false)
     {
-      mario.drawBoard(3,10);
+      mario.drawBoard(3,10); //creates the board
       mario.continueKey();
-      System.out.println(one.getName()+" rolled a " + one.diceRoll());
-      
+      roll = one.diceRoll(); //temporary int for player one's roll
+      System.out.println(one.getName()+" rolled a " + roll);
+      mario.move(one.move(roll)); //calls move method which calls occupy method 
       System.out.println("It works"); //DICE ROLL, DO A MOVE THING FOR ONE PLAYER? is move a board method or player method?
-      won = true;
+      if (one.getCoins() > 1)
+        won = true;
+      else if(two.getCoins() > 1)
+        won = true;
+      else 
+        won = false;
     }
     System.out.println("Game Over");
     
   }
   /*MOVEMENT
    * can get a position int from the player class,  Ã
-   * can then use that to change the display value of that particular position object - if it goes through drawmap each time, i might just need display - 1 for index 
+   * can then use that to change the display value of that particular position object - if it goes through drawBoard each time, i might just need display - 1 for index 
    * just have to be able to find the relevant object
-   * then change the display value to read X or XX depending
+   * then change the display value to read X or O depending
    * and then when the next turn comes around, get the position int from player class
    * change back display value
    * change the other display value
-   * //display value changes by taking the temp value + X or XX with another counter or something
+   * //display value changes by taking the temp value + X or O with another counter or something
    * ///then using a temporary variable to reset it
-  */
+   */
 }

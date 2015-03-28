@@ -17,27 +17,30 @@ public class Position
   public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
     index = ind;
-    display = dis;
     tDisplay = dis; //because i need the raw display value
     
     if (typ < 2) //random dice roll for position type
     {
-      display = " " + display; //nothing
+      type = " ";
+      display = type + tDisplay; //nothing
       function = 0;
     }
     else if (typ < 4)
     {
-      display = "+" + display; //plus coins
+      type = "+";
+      display = type + tDisplay; //plus coins
       function = 1;
     }
     else if (typ <6)
     {
-      display = "-" + display; //minus coins
+      type = "-";
+      display = type + tDisplay; //minus coins
       function = 2;
     }
     else
     {
-      display = "[" + display; //play a game
+      type = "[";
+      display = type + tDisplay; //play a game
       function = 3;
     }
   }
@@ -74,13 +77,39 @@ public class Position
     return index;
   }
   
-  public String occupy(){ //display if position is occupied
-    tDisplay = display;  // why would i do that why did i do that i dont really know whats going on right now
-    return tDisplay;
+  public void occupy(){ //display if position is occupied
+    tDisplay = display;  //so how would i make it read XO if both players are on it
+    if (index<10){
+      if(function == 0){ 
+        display = " X  ";
+      }
+      else if(function == 1){ 
+        display = "+X  ";
+      }
+      else if(function == 2){  
+        display = "-X  ";
+      }
+      else{ 
+        display = "[X  ";
+      }
+    }
+    else{
+      if(function == 0){ 
+        display = " X ";
+      }
+      else if(function == 1){ 
+        display = "+X ";
+      }
+      else if(function == 2){  
+        display = "-X ";
+      }
+      else{ 
+        display = "[X ";
+      }
+    }
   }
-  public String unoccupy(){ //display if position no longer occupied
+  public void unoccupy(){ //display if position no longer occupied
     display = tDisplay;
-    return display;
   }
   
 }
