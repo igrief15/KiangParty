@@ -70,11 +70,9 @@ public class Board
     function = map.get(position-1).getFunction();
     return function; //returns the coin value or other stuff
   }
-    int ocCount = 0; //number occupying a space
   
   public void occupy(int position, int player) //int player divides into one and two
   {
-    ocCount++;
     if(ocCount==1) //one player on it
       map.get(position-1).occupyOne(player); 
     else //two players on it

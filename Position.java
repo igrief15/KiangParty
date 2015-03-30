@@ -128,4 +128,36 @@ public class Position
         display = tDisplay;
     }
   }
+  
+  
+  
+  
+  
+  
+  /*//this is in the board class but it really should be here and this might be why its not working 
+  
+  int ocCount = 0; //number occupying a space
+  
+  
+  public void occupy(int position, int player) //int player divides into one and two
+  {
+    if(ocCount==1) //one player on it
+      map.get(position-1).occupyOne(player); 
+    else //two players on it
+      map.get(position-1).occupyTwo(player);
+    
+  }
+  public void unoccupy(int position, int player)
+  {
+    ocCount--;
+    if(ocCount==1)
+      map.get(position-1).unoccupyTwo(player); //changes XO to X or O
+    else
+      map.get(position-1).unoccupyOne(player); //changes X or O to original value
+    
+  }
+  
+  */
+  
+  
 }
