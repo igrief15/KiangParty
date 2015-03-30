@@ -10,36 +10,38 @@ public class Board
       int tempDis = i+1; //creates a variable for the display parameter of position object
       int tempType = (int)(Math.random()*10); //creates a variable for type parameter of position object
       Position p = new Position(i,""+tempDis,tempType); //creates a position object at index i, display i+1, and a random type
-      map.add(p);
+      map.add(p); //each position object (index, index+1, random int) is added to an arraylist
     }
     return;
   }
-  
+  /*
   public void addPos(int index, String display, int type) {
     map.add(new Position(index, display, type));
   }
+  *///unnecessary, but will keep code
   
-  public Position getPos(int index) {
-    return map.get(index);
+  public Position getPos(int index) { //give index, get the position object at that index. 
+    return map.get(index); //i tihnk i wanted to do something with this, and it seems like it could work with something 
   }
   
   
   
   public void drawBoard(int numRows, int numCols) //ok so it needs to create a few rows of strings concatenized together
   {
-    String[][] mapArray = new String[numRows][numCols]; //view is a 2D array
+    Position[][] mapArray = new Position[numRows][numCols]; //view is a 2D array
     int mapIndex = 0;//index of the 1D array
     
     for(int row = 0; row < numRows; row++)//iterates through all rows and columns
     {
       for(int col = 0; col < numCols; col++){
         if(row % 2 == 0)
-          mapArray[row][col] = map.get(mapIndex).getDisplay();
+          mapArray[row][col] = map.get(mapIndex); //the odd rows are put into the array normally
         else 
-          mapArray[row][numCols - col - 1] = map.get(mapIndex).getDisplay();
+          mapArray[row][numCols - col - 1] = map.get(mapIndex); //the even rows go backward
         mapIndex++;
       }
     }
+    
     int count = 0;
     int otherCount = 0; //i needed another count variable
     for(int row = 0; row < numRows; row++)//this should iterate through the 2D array, space out each column and each row. 
@@ -49,9 +51,9 @@ public class Board
         count++;
         otherCount++;
         if(otherCount < 10) //the first ten values get another space between them to align with the rest
-          System.out.print(mapArray[row][col] + "     ");
+          System.out.print(mapArray[row][col].getDisplay() + "     ");
         else
-          System.out.print(mapArray[row][col] + "    ");
+          System.out.print(mapArray[row][col].getDisplay() + "    ");
         if(count == numCols) //whenever there are 10 values in a row, it starts a new row
         {
           System.out.println("\n\n");

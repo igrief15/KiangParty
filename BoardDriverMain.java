@@ -13,6 +13,10 @@ public class BoardDriverMain
     System.out.println("Player one, what is your name?"); //choose player name
     String name = keyboard.nextLine();
     Player one = new Player(1,name,0);
+    
+    
+    
+    
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first

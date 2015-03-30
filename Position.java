@@ -20,19 +20,19 @@ public class Position
     index = ind;
     tDisplay = dis; //because i need the raw display value
     oDisplay = "";
-    if ((typ < 2)||(index==0))  //random dice roll for position type
+    if ((typ < 4)||(index==0))  //random dice roll for position type
     {
       type = " ";
       display = type + tDisplay; //nothing
       function = 0;
     }
-    else if (typ < 4)
+    else if (typ < 7)
     {
       type = "+";
       display = type + tDisplay; //plus coins
       function = 1;
     }
-    else if (typ <6)
+    else if (typ <9)
     {
       type = "-";
       display = type + tDisplay; //minus coins
@@ -78,36 +78,14 @@ public class Position
     
     if(player==1){ //if player one occupies the single space, X
       oDisplay = display;
-      if(function == 0){ 
-        display = " X ";
-      }
-      else if(function == 1){ 
-        display = "+X ";
-      }
-      else if(function == 2){  
-        display = "-X ";
-      }
-      else{ 
-        display = "[X ";
-      }
+      display = type + "X ";
       if (index<10){ //just for alignment, first 10 have more space
         display += " ";
       }
     }
     else{ //otherwise its player two, with O
       tDisplay = display; 
-      if(function == 0){ 
-        display = " O ";
-      }
-      else if(function == 1){ 
-        display = "+O ";
-      }
-      else if(function == 2){  
-        display = "-O ";
-      }
-      else{ 
-        display = "[O ";
-      }
+      display = type + "O ";
       if (index<10){ //just for alignment, first 10 have more space
         display += " ";
       }
@@ -115,20 +93,8 @@ public class Position
   }
   
   
-  
   public void occupyTwo(int player){ //display if position is occupied
-    if(function == 0){ 
-      display = " XO";
-    }
-    else if(function == 1){ 
-      display = "+XO";
-    }
-    else if(function == 2){  
-      display = "-XO";
-    }
-    else{ 
-      display = "[XO";
-    }
+    display = type + "XO";
     if (index<10){ //just for alignment, first 10 have more space
       display += " ";
     }
@@ -136,35 +102,13 @@ public class Position
   }
   public void unoccupyTwo(int player){ //change display from XO to X or O
     if(player == 1){ //if player one moves, leaves O
-      if(function == 0){ 
-        display = " O ";
-      }
-      else if(function == 1){ 
-        display = "+O ";
-      }
-      else if(function == 2){  
-        display = "-O ";
-      }
-      else{ 
-        display = "[O ";
-      }
+      display = type + "O ";
       if (index<10){ //just for alignment, first 10 have more space
         display += " ";
       }
     }
     else{ //otherwise player one stays, its X
-      if(function == 0){ 
-        display = " X ";
-      }
-      else if(function == 1){ 
-        display = "+X ";
-      }
-      else if(function == 2){  
-        display = "-X ";
-      }
-      else{ 
-        display = "[X ";
-      }
+      display = type + "X ";
       if (index<10){ //just for alignment, first 10 have more space
         display += " ";
       }
