@@ -14,9 +14,6 @@ public class BoardDriverMain
     String name = keyboard.nextLine();
     Player one = new Player(1,name,0);
     
-    
-    
-    
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
@@ -25,13 +22,13 @@ public class BoardDriverMain
     {
       mario.drawBoard(3,10); //creates the board
       
-      mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
+      mario.continueKey(); 
       roll = one.diceRoll(); //temporary int for player one's roll
       System.out.println(one.getName()+" rolled a " + roll);
-      mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
+      mario.continueKey();
       mario.unoccupy(one.getPosition(), 1); //calls unoccupy method
       mario.occupy(one.move(roll), 1); //calls occupy method
-      one.changeCoins(mario.function(one.move(roll))); //calls function
+      one.changeCoins(mario.function(one.getPosition())); 
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       
@@ -47,10 +44,10 @@ public class BoardDriverMain
       mario.continueKey();
       roll = two.diceRoll(); //temporary int for player one's roll
       System.out.println(two.getName()+" rolled a " + roll);
-      mario.continueKey(); //SEEMS TO NOT ALWAYS DO THIS 
+      mario.continueKey();
       mario.unoccupy(two.getPosition(), 2); //calls unoccupy method
       mario.occupy(two.move(roll), 2); //calls occupy method
-      two.changeCoins(mario.function(two.move(roll))); //calls function
+      two.changeCoins(mario.function(two.getPosition())); //calls function
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       

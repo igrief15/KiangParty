@@ -7,6 +7,7 @@ public class Position
   int function; //int for how many coins? i think. I'm not sure how that works, and i think i have to change it anyway
   String tDisplay; //temporary string to switch the display value with X when occupied
   String oDisplay;
+  int count;
   public Position() //default constructor
   {
     index = 0;
@@ -14,6 +15,7 @@ public class Position
     function = 0;
     tDisplay = "";
     oDisplay = "";
+    count = 0;
   }
   public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
@@ -74,90 +76,91 @@ public class Position
     return index;
   }
   
-  public void occupyOne(int player){ //display if position is occupied
-    
-    if(player==1){ //if player one occupies the single space, X
-      oDisplay = display;
-      display = type + "X ";
-      if (index<10){ //just for alignment, first 10 have more space
-        display += " ";
+  public void occupy(int player){ //display if position is occupied
+    count++;
+    if(count == 1){ //1 player occupying space
+      
+      if(player==1){ //if player 1 occupies space
+        oDisplay = display;
+        display = type + "X ";
+        if (index<10){ //just for alignment, first 10 have more space
+          display += " ";
+        }
+      }
+      else{ //otherwise its player two, with O
+        tDisplay = display; 
+        display = type + "O ";
+        if (index<10){ //just for alignment, first 10 have more space
+          display += " ";
+        }
       }
     }
-    else{ //otherwise its player two, with O
-      tDisplay = display; 
-      display = type + "O ";
-      if (index<10){ //just for alignment, first 10 have more space
-        display += " ";
-      }
-    }
-  }
-  
-  
-  public void occupyTwo(int player){ //display if position is occupied
-    display = type + "XO";
-    if (index<10){ //just for alignment, first 10 have more space
-      display += " ";
-    }
-    
-  }
-  public void unoccupyTwo(int player){ //change display from XO to X or O
-    if(player == 1){ //if player one moves, leaves O
-      display = type + "O ";
-      if (index<10){ //just for alignment, first 10 have more space
-        display += " ";
-      }
-    }
-    else{ //otherwise player one stays, its X
-      display = type + "X ";
+    if(count ==2){ //2 players occupying space
+      display = type + "XO";
       if (index<10){ //just for alignment, first 10 have more space
         display += " ";
       }
     }
   }
-  public void unoccupyOne(int player){ //change display from whatever to original value
-    if(player == 1){ //if player one moves (not sure if it matters)
-      if (index<10) //just for alignment, first 10 have more space
-        display = " "+ oDisplay;
-      else
-        display = oDisplay;
+  
+  public void unoccupy(int player){ //change display from XO to X or O
+    count--;
+    if(count==0){ //no player on space
+      if(player == 1){ //if player one moves (not sure if it matters)
+        if (index<10) //just for alignment, first 10 have more space
+          display = " "+ oDisplay;
+        else
+          display = oDisplay;
+      }
+      else{ //else player two
+        if (index<10) //just for alignment, first 10 have more space
+          display = " "+ tDisplay;
+        else
+          display = tDisplay;
+      }
     }
-    else{ //else player two
-      if (index<10) //just for alignment, first 10 have more space
-        display = " "+ tDisplay;
-      else
-        display = tDisplay;
+    else{ //if there is one player on space
+      if(player == 1){ //if player one moves, leaves O
+        display = type + "O ";
+        if (index<10){ //just for alignment, first 10 have more space
+          display += " ";
+        }
+      }
+      else{ //otherwise player one stays, its X
+        display = type + "X ";
+        if (index<10){ //just for alignment, first 10 have more space
+          display += " ";
+        }
+      }
     }
   }
-  
-  
-  
-  
-  
-  
-  /*//this is in the board class but it really should be here and this might be why its not working 
-  
-  int ocCount = 0; //number occupying a space
-  
-  
-  public void occupy(int position, int player) //int player divides into one and two
-  {
-    if(ocCount==1) //one player on it
-      map.get(position-1).occupyOne(player); 
-    else //two players on it
-      map.get(position-1).occupyTwo(player);
-    
-  }
-  public void unoccupy(int position, int player)
-  {
-    ocCount--;
-    if(ocCount==1)
-      map.get(position-1).unoccupyTwo(player); //changes XO to X or O
-    else
-      map.get(position-1).unoccupyOne(player); //changes X or O to original value
-    
-  }
-  
-  */
-  
-  
 }
+
+
+
+
+
+/*//this is in the board class but it really should be here and this might be why its not working 
+ * 
+ int ocCount = 0; //number occupying a space
+ 
+ 
+ public void occupy(int position, int player) //int player divides into one and two
+ {
+ if(ocCount==1) //one player on it
+ map.get(position-1).occupyOne(player); 
+ else //two players on it
+ map.get(position-1).occupyTwo(player);
+ 
+ }
+ public void unoccupy(int position, int player)
+ {
+ ocCount--;
+ if(ocCount==1)
+ map.get(position-1).unoccupyTwo(player); //changes XO to X or O
+ else
+ map.get(position-1).unoccupyOne(player); //changes X or O to original value
+ 
+ }
+ 
+ */
