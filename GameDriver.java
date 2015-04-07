@@ -33,102 +33,111 @@ public class GameDriver
   
   
   
-  public int randomNim(){
+  
+  
+  
+  
+  public int Nim(String oneName, String twoName){
     boolean win = false;
     int startnum = 12;
     int pieces;
     int playermove;
-    GamePlayer test = new GamePlayer(startnum);
     pieces = startnum;
+    int winner = 0;
     while (pieces > 1){
+      //player one
       System.out.println("There are " + pieces + " pieces remaining.");
-      System.out.println("Enter your move: ");
+      System.out.println(oneName + ", enter your move: ");
       playermove = in.nextInt();
-      while ((playermove < 1) || (playermove > 2)){ //checks to see if number is within range
+      if (!((playermove == 1) || (playermove == 2))){ //checks to see if number is within range or not some dumb answer
         System.out.println("Please enter 1 or 2: ");
         playermove = in.nextInt();
       }
       pieces -= playermove;
-      if (pieces == 1){
-        System.out.println("Computer loses.");
+      if (pieces <= 1){
+        System.out.println(oneName + " wins!");
+        winner = 1;
       }
       else System.out.println("There are " + pieces + " pieces remaining.");
-      pieces -= test.playNim(pieces);
-      if (pieces == 1){
-        System.out.println("You lose.");
+      
+      
+      //player two
+      System.out.println(twoName + ", enter your move: ");
+      playermove = in.nextInt();
+      if (!((playermove == 1) || (playermove == 2))){ //checks to see if number is within range or not some dumb answer
+        System.out.println("Please enter 1 or 2: ");
+        playermove = in.nextInt();
       }
+      pieces -= playermove;
+      if (pieces <= 1){
+        System.out.println(twoName + " wins!");
+        winner = 2;
+      }
+      else System.out.println("There are " + pieces + " pieces remaining.");
+      
+      
+      }
+    if(winner == 1)
+      return 1;
+    else
+      return 2;
+      
     }
-    return 0;
-  }
+ 
   
   
-  public int guessNumber()
+  public int guessNumber(String oneName, String twoName)
   {
     //couldn't find a good way to select the range due to the random number generator thing
-    int count = 0;
     Scanner keyboard = new Scanner(System.in);
-    int answer = (int)(Math.random()*100+1);//random number is from 0-1, * 10, and add 1 because int
+    int answer = (int)(Math.random()*10+1);//random number is from 0-1, * 10, and add 1 because int
     boolean won = false; //keeps track of whether game is won
-    int result = 0; //-1 is too low, 1 is too high, and 0 means begining of game
+    int winner = 0; 
     boolean choice = false;
+    System.out.println("Welcome to the game, player!");
     while (choice == false) //a loop so the game still works if they don't input specifically 'human' or 'computer'
     {
-      System.out.println("Is the player human or computer?"); //choose Player or Computer class
-      String command = keyboard.nextLine(); //prompts input
-      if (command.equals ("human")) //if they type 'human'
+      //create a loop that continues until player guesses correct answer
+      System.out.println ("I'm thinking of an integer between 1 and 10.");
+      while (won==false)
       {
-        choice = true;
-        GamePlayer human = new GamePlayer();
-        //create a loop that continues until player guesses correct answer
-        if (result == 0) System.out.println("Welcome to the game, player!");
-        System.out.println ("I'm thinking of a number between 1 and 100.");
-        while (won==false)
-        {
-          int guess = human.playGuess(result);//takes int from Player
-          if (guess<answer) {
-            count++;
-            result = -1;
-          }
-          else if (guess>answer) {
-            result = 1;
-            count++;
-          }
-          else won = true; //catch-all
+        System.out.println (oneName + ", what is your guess?"); //make sure it works with non integers and stuff
+        int guess = Integer.parseInt(keyboard.nextLine()); //from stackoverflow
+        if (guess<answer) {
+          System.out.println ("Nope.");
         }
-        System.out.println("You win!");
-        System.out.println("You took " + (count+1) +" tries."); //count+1 because count doesnt get updated at the end
-      }
-      else if (command.equals ("computer")) //if they type 'computer'
-      {
-        
-        
-        choice = true;
-        GamePlayer one = new GamePlayer();
-        //create a loop that continues until player guesses correct answer
-        if (result == 0) System.out.println("Welcome to the game, computer!");
-        System.out.println ("I'm thinking of a number between 1 and 100.");
-        while (won==false)
-        {
-          int guess = one.playGuess(result);//takes int from Player
-          //figure out whether we are too high or too low 
-          if (guess<answer) {
-            count++;
-            result = -1;
-          }
-          else if (guess>answer) {
-            result = 1;
-            count++;
-          }
-          else won = true; //catch-all
+        else if (guess>answer) {
+          System.out.println ("Nope.");
         }
-        System.out.println("The computer wins!");
-        System.out.println("The computer took " + (count+1) +" tries"); 
-      }
-      else { //if they type anything that isn't 'human' or 'computer'
-        System.out.println("Please input a valid response"); //loops back
+        else {
+          winner = 1;
+          won = true;
+        }
+        
+        System.out.println (twoName + ", what is your guess?"); //make sure it works with non integers and stuff
+        guess = Integer.parseInt(keyboard.nextLine()); //from stackoverflow
+        if (guess<answer) {
+          System.out.println ("Nope.");
+        }
+        else if (guess>answer) {
+          System.out.println ("Nope.");
+        }
+        else { 
+          won = true;
+          winner = 2;
+        }
       }
     }
-    return 1;
+    if (winner == 1){
+      System.out.println(oneName + " wins!");
+      return 1;
+    }
+    else {
+      System.out.println(twoName + " wins!");
+      return 2;
+    }
   }
-  
 }
+
+
+

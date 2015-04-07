@@ -5,6 +5,7 @@ public class BoardDriverMain
 { 
   public static void main(String[] args)
   {
+    int score = 10; //score necessary to win
     int roll = 0;
     Scanner keyboard = new Scanner(System.in);
     Board mario = new Board();  
@@ -13,11 +14,13 @@ public class BoardDriverMain
     System.out.println("Player one, what is your name?"); //choose player name
     String name = keyboard.nextLine();
     Player one = new Player(1,name,0);
-    
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
+    System.out.println("X = " + one.getName());
+    System.out.println("O = " + two.getName());
     System.out.println("First player with 10 coins wins!");
+    
     while (won == false)
     {
       mario.drawBoard(3,10); //creates the board
@@ -32,9 +35,9 @@ public class BoardDriverMain
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       
-      if (one.getCoins() > 5) //temporary value for testing
+      if (one.getCoins() > score) //temporary value for testing
         won = true;
-      else if(two.getCoins() > 5)
+      else if(two.getCoins() > score)
         won = true;
       else 
         won = false;
@@ -51,9 +54,9 @@ public class BoardDriverMain
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       
-      if (one.getCoins() > 5)
+      if (one.getCoins() > score)
         won = true;
-      else if(two.getCoins() > 5)
+      else if(two.getCoins() > score)
         won = true;
       else 
         won = false;

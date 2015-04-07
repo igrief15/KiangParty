@@ -13,15 +13,15 @@ public class Position
     index = 0;
     display = "1";
     function = 0;
-    tDisplay = "";
-    oDisplay = "";
+    tDisplay = display;
+    oDisplay = display;
     count = 0;
   }
   public Position(int ind, String dis, int typ) //constructor with all 3 parameters for instance variables
   {
     index = ind;
     tDisplay = dis; //because i need the raw display value
-    oDisplay = "";
+    oDisplay = dis;
     if ((typ < 4)||(index==0))  //random dice roll for position type
     {
       type = " ";
@@ -126,7 +126,7 @@ public class Position
           display += " ";
         }
       }
-      else{ //otherwise player one stays, its X
+      else{ //otherwise player two moves, leaves X
         display = type + "X ";
         if (index<10){ //just for alignment, first 10 have more space
           display += " ";
