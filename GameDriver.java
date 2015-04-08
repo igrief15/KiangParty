@@ -8,7 +8,6 @@ public class GameDriver
   int random = (int)(Math.random()*10);
   
   
-  
   public int getGame(){  //get type of game
     
     if (random < 2) //random dice roll for game selection
@@ -33,6 +32,30 @@ public class GameDriver
   
   
   
+  public int diceGame(String oneName, String twoName){
+    Scanner keyboard = new Scanner(System.in);
+    //player one
+    System.out.println(oneName + ", roll the dice!"); 
+    Integer.parseInt(keyboard.nextLine()); //from stackoverflow
+    int oneRoll = (int)Math.random()*12+1;
+    System.out.println(oneName + " rolled a " + oneRoll); 
+    //player two
+    System.out.println(twoName + ", roll the dice!"); 
+    Integer.parseInt(keyboard.nextLine()); 
+    int twoRoll = (int)Math.random()*12+1;
+    System.out.println(twoName+ " rolled a " + twoRoll);
+    if(oneRoll>twoRoll){
+      System.out.println(oneName +" wins!");
+      return 1;
+    }
+    else{
+      System.out.println(twoName+ " wins!");
+      return 2;
+    }
+    
+    
+    
+  }
   
   
   
@@ -76,14 +99,14 @@ public class GameDriver
       else System.out.println("There are " + pieces + " pieces remaining.");
       
       
-      }
+    }
     if(winner == 1)
       return 1;
     else
       return 2;
-      
-    }
- 
+    
+  }
+  
   
   
   public int guessNumber(String oneName, String twoName)
