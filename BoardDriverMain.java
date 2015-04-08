@@ -17,6 +17,7 @@ public class BoardDriverMain
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
+    GameDriver game = new GameDriver();  
     System.out.println("X = " + one.getName());
     System.out.println("O = " + two.getName());
     System.out.println("First player with 10 coins wins!");
