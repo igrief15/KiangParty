@@ -1,7 +1,8 @@
 import java.util.Scanner;
 public class GamePlayer{
- 
+  
   public int diceGame(String oneName, String twoName){
+    System.out.println("[DICE GAME]"); 
     Scanner keyboard = new Scanner(System.in);
     //player one
     System.out.println(oneName + ", roll the dice!"); 
@@ -21,15 +22,13 @@ public class GamePlayer{
       System.out.println(twoName+ " wins!");
       return 2;
     }
-    
-    
-    
   }
   
   
   
   
   public int Nim(String oneName, String twoName){
+    System.out.println("[NIM]"); 
     Scanner in = new Scanner(System.in);
     boolean win = false;
     int startnum = 12;
@@ -81,6 +80,7 @@ public class GamePlayer{
   
   public int guessNumber(String oneName, String twoName)
   {
+    System.out.println("[GUESS NUMBER]"); 
     //couldn't find a good way to select the range due to the random number generator thing
     Scanner keyboard = new Scanner(System.in);
     int answer = (int)(Math.random()*10+1);//random number is from 0-1, * 10, and add 1 because int

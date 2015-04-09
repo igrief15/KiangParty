@@ -7,6 +7,7 @@ public class BoardDriverMain
   {
     int score = 10; //score necessary to win
     int roll = 0;
+    int function = 0;
     Scanner keyboard = new Scanner(System.in);
     Board mario = new Board();  
     mario.createBoard();
@@ -16,11 +17,14 @@ public class BoardDriverMain
     Player one = new Player(1,name,0);
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
-    Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
     GameDriver game = new GameDriver();  
+    Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
     System.out.println("X = " + one.getName());
     System.out.println("O = " + two.getName());
-    System.out.println("First player with 10 coins wins!");
+    System.out.println("If you land on a '+' space, you will get 3 coins."); //choose player name
+    System.out.println("If you land on a '-' space, you will lose 3 coins."); //choose player name
+    System.out.println("'[' spaces will start a minigame! The winner gets 10 coins."); //choose player name
+    System.out.println("First player with 50 coins wins!");
     
     while (won == false)
     {
@@ -29,10 +33,25 @@ public class BoardDriverMain
       mario.continueKey(); 
       roll = one.diceRoll(); //temporary int for player one's roll
       System.out.println(one.getName()+" rolled a " + roll);
-      mario.continueKey();
       mario.unoccupy(one.getPosition(), 1); //calls unoccupy method
       mario.occupy(one.move(roll), 1); //calls occupy method
-      one.changeCoins(mario.function(one.getPosition())); 
+      System.out.println(one.getName()+" is now on space " + one.getPosition());
+      mario.continueKey();
+      function = mario.function(one.getPosition());
+      if(function == 10){
+        System.out.println("Play a game!");
+        game.getGame(one.getName(), two.getName());
+      }
+      else if(function == 3){
+        System.out.println(one.getName() + " gets 3 coins!");
+        one.changeCoins(function);
+      }
+      else if(function == -3){
+        System.out.println(one.getName() + " loses 3 coins!");
+        one.changeCoins(function);
+      }
+      else{
+      }
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       
@@ -48,10 +67,25 @@ public class BoardDriverMain
       mario.continueKey();
       roll = two.diceRoll(); //temporary int for player one's roll
       System.out.println(two.getName()+" rolled a " + roll);
-      mario.continueKey();
       mario.unoccupy(two.getPosition(), 2); //calls unoccupy method
       mario.occupy(two.move(roll), 2); //calls occupy method
-      two.changeCoins(mario.function(two.getPosition())); //calls function
+      System.out.println(two.getName()+" is now on space " + two.getPosition());
+      mario.continueKey();
+      function = mario.function(two.getPosition());
+      if(function == 10){
+        System.out.println("Play a game!");
+        game.getGame(one.getName(), two.getName());
+      }
+      else if(function == 3){
+        System.out.println(two.getName() + " gets 3 coins!");
+        two.changeCoins(function);
+      }
+      else if(function == -3){
+        System.out.println(two.getName() + " loses 3 coins!");
+        two.changeCoins(function);
+      }
+      else{
+      }
       System.out.println(one.getName() + " has " + one.getCoins() + " coins.");
       System.out.println(two.getName() + " has " + two.getCoins() + " coins.");
       

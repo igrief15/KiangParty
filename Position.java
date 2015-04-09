@@ -63,7 +63,7 @@ public class Position
       return -3; 
     }
     else{  //play a game (not sure how that will work right now, but will return to this later)
-      return 0;
+      return 10;
     }
     
   }
