@@ -8,6 +8,7 @@ public class BoardDriverMain
     int score = 10; //score necessary to win
     int roll = 0;
     int function = 0;
+    int winner = 0;
     Scanner keyboard = new Scanner(System.in);
     Board mario = new Board();  
     mario.createBoard();
@@ -40,7 +41,15 @@ public class BoardDriverMain
       function = mario.function(one.getPosition());
       if(function == 10){
         System.out.println("Play a game!");
-        game.getGame(one.getName(), two.getName());
+        winner = game.getGame(one.getName(), two.getName());
+        if(winner==1){
+          System.out.println(one.getName() + " gets 10 coins!");
+          one.changeCoins(function);
+        }
+        else{
+          System.out.println(two.getName() + " gets 10 coins!");
+          two.changeCoins(function);
+        }
       }
       else if(function == 3){
         System.out.println(one.getName() + " gets 3 coins!");
@@ -74,7 +83,15 @@ public class BoardDriverMain
       function = mario.function(two.getPosition());
       if(function == 10){
         System.out.println("Play a game!");
-        game.getGame(one.getName(), two.getName());
+        winner = game.getGame(one.getName(), two.getName());
+        if(winner==1){
+          System.out.println(one.getName() + " gets 10 coins!");
+          one.changeCoins(function);
+        }
+        else{
+          System.out.println(two.getName() + " gets 10 coins!");
+          two.changeCoins(function);
+        }
       }
       else if(function == 3){
         System.out.println(two.getName() + " gets 3 coins!");
