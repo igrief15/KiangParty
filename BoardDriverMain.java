@@ -4,7 +4,7 @@ public class BoardDriverMain
 { 
   public static void main(String[] args)
   {
-    int score = 502; //score necessary to win
+    int score = 100; //score necessary to win
     int roll = 0;
     int function = 0;
     int winner = 0;
@@ -23,7 +23,7 @@ public class BoardDriverMain
     System.out.println("If you land on a '+' space, you will get 3 coins."); //choose player name
     System.out.println("If you land on a '-' space, you will lose 3 coins."); //choose player name
     System.out.println("'[' spaces will start a minigame! The winner gets 10 coins."); //choose player name
-    System.out.println("First player with 50 coins wins!");
+    System.out.println("First player with " +score+ " coins wins!");
     
     while (won == false)
     {
