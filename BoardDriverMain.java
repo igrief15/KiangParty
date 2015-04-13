@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-
 public class BoardDriverMain
 { 
   public static void main(String[] args)
   {
-    int score = 10; //score necessary to win
+    int score = 502; //score necessary to win
     int roll = 0;
     int function = 0;
     int winner = 0;
@@ -18,7 +17,6 @@ public class BoardDriverMain
     Player one = new Player(1,name,0);
     System.out.println("Player two, what is your name?"); //choose player name
     name = keyboard.nextLine();
-    GameDriver game = new GameDriver();  
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
     System.out.println("X = " + one.getName());
     System.out.println("O = " + two.getName());
@@ -41,7 +39,7 @@ public class BoardDriverMain
       function = mario.function(one.getPosition());
       if(function == 10){
         System.out.println("Play a game!");
-        winner = game.getGame(one.getName(), two.getName());
+        winner = mario.getGame(one.getName(), two.getName());
         if(winner==1){
           System.out.println(one.getName() + " gets 10 coins!");
           one.changeCoins(function);
@@ -83,7 +81,7 @@ public class BoardDriverMain
       function = mario.function(two.getPosition());
       if(function == 10){
         System.out.println("Play a game!");
-        winner = game.getGame(one.getName(), two.getName());
+        winner = mario.getGame(one.getName(), two.getName());
         if(winner==1){
           System.out.println(one.getName() + " gets 10 coins!");
           one.changeCoins(function);

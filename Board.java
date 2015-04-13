@@ -2,6 +2,26 @@ import java.util.ArrayList;
 public class Board
 {
   ArrayList<Position> map = new ArrayList<Position>();
+  
+  GameDriver play = new GameDriver();
+  public int getGame(String oneName, String twoName){  //get type of game
+  int random = (int)(Math.random()*10);
+    
+    if (random < 4) //random dice roll for game selection
+    {
+      return play.playNim(oneName, twoName);
+    }
+    else if (random < 7)
+    {
+      return play.playDiceGame(oneName, twoName);
+    }
+    else if (random <10)
+    {
+      return play.playGuessNumber(oneName, twoName);
+    }
+    else
+      return 0;
+  }
   public void createBoard()
   {
     
