@@ -15,10 +15,12 @@ public class Board
     {
       return play.playDiceGame(oneName, twoName);
     }
+    /*
     else if (random <10)
     {
       return play.playGuessNumber(oneName, twoName);
     }
+    */
     else
       return 0;
   }
@@ -29,7 +31,7 @@ public class Board
     {
       int tempDis = i+1; //creates a variable for the display parameter of position object
       int tempType = (int)(Math.random()*10); //creates a variable for type parameter of position object
-      Position p = new Position(i,""+tempDis,10); //creates a position object at index i, display i+1, and a random type
+      Position p = new Position(i,""+tempDis,tempType); //creates a position object at index i, display i+1, and a random type
       map.add(p); //each position object (index, index+1, random int) is added to an arraylist
     }
     return;
