@@ -19,7 +19,7 @@ public class BoardDriverMain
     name = keyboard.nextLine();
     Player two = new Player(1,name,0); //too much work to implement a dice roll for which player goes first
     mario.changeCount();
-    
+      
     System.out.println("X = " + one.getName());
     System.out.println("O = " + two.getName());
     System.out.println("If you land on a '+' space, you will get 3 coins."); //choose player name
