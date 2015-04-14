@@ -68,6 +68,10 @@ public class Position
     
   }
   
+  public void changeCount(){//I need this because space one has a count of -2 forever unless I change it at the beginning
+    count = 2;
+  }
+  
   public String getDisplay(){ //returns whatever it is that is displayed at the given position (map starts on 1)
     return display;
   }

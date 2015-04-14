@@ -93,6 +93,10 @@ public class Board
     return function; //returns the coin value or other stuff
   }
   
+  public void changeCount(){
+    map.get(0).changeCount();
+  }
+  
   public void occupy(int position, int player) //int player is either one or two, for player one or two
   {
     map.get(position-1).occupy(player); 
