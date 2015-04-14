@@ -4,6 +4,7 @@ public class BoardDriverMain
 { 
   public static void main(String[] args)
   {
+    System.out.println("Welcome to Kiang Party!"); //choose player name
     int score = 100; //score necessary to win
     int roll = 0;
     int function = 0;
